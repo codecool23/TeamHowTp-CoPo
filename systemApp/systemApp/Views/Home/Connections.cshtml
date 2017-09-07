@@ -25,12 +25,14 @@
                     <th>IP</th>
                     <th>Name</th>
                 </tr>
-            </thead>
+            </thead>           
             <tbody>
-                <tr>
-                    <td>192.168.161.133</td>
-                    <td>John</td>
-                </tr>
+                @foreach (var x in ConnectionManager.connectionList)
+            {
+                    <tr>
+                        <td>@x.IP</td>
+                        <td>@x.Name</td>
+                    </tr>}                
             </tbody>
         </table>        
     </div>
