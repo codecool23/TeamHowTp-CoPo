@@ -13,16 +13,9 @@ namespace systemApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Connections()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "List of the available connections";
 
             return View();
         }
