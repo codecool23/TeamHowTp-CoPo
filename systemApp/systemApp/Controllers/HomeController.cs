@@ -13,17 +13,17 @@ namespace systemApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Connections()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "List of the available connections";
 
             return View();
         }
 
-        public ActionResult Contact()
+        //[Route("infos/{userName}")]
+        public ActionResult Info(string userName)
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewData["Name"] = Server.UrlEncode(userName);
             return View();
         }
     }

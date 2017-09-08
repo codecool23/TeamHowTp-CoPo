@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Connectionlist</h1>
+        <p class="lead">Connections available</p>
+    </div>
+    <div class="container">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Name</th>
+                </tr>
+            </thead>           
+            <tbody>
+                @{var myurl = Url.Action("Info", "Home", new { IP = "192.133.133.133", userName = "myName" }); }
+                System.Diagnostics.Debug.WriteLine(@myurl);
+                
+                <!--Generates a fully qualified URL to an action method by using the specified action name, controller name, and route values.-->
+                @foreach (var x in ConnectionManager.connectionList)
+                {
+                    <a href="@Url.Action("Info", "Home", new { IP = @x.IP, userName = @x.Name })">info</a>
+                    <tr onclick="location.href = '@(Url.Action("Info", "Home", new { userName = @x.Name }))'">
+                        <td>@x.IP</td>
+                        <td>@x.Name</td>
+                    </tr>}                   
+            </tbody>
+        </table>        
+    </div>
+</body>
+</html>
