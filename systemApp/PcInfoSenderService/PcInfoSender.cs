@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using PcInfoModels;
 using System.ServiceProcess;
+using System.Diagnostics;
 
 namespace PcInfoSenderService
 {
@@ -26,6 +27,11 @@ namespace PcInfoSenderService
         public ServiceController[] GetAllServices()
         {
             return ServiceController.GetServices();
+        }
+
+        public Process[] GetAllProcess()
+        {
+            return Process.GetProcesses();
         }
         
     }

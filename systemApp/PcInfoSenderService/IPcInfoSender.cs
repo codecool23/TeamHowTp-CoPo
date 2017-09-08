@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using PcInfoModels;
 using System.ServiceProcess;
+using System.Diagnostics;
 
 namespace PcInfoSenderService
 {
@@ -20,5 +21,8 @@ namespace PcInfoSenderService
 
         [OperationContract]
         ServiceController[] GetAllServices();
+
+        [OperationContract]
+        Process[] GetAllProcess();
     }
 }
