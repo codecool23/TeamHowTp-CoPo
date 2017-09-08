@@ -19,5 +19,12 @@ namespace systemApp.Controllers
 
             return View();
         }
+
+        //[Route("infos/{userName}")]
+        public ActionResult Info(string userName)
+        {
+            ViewData["Name"] = Server.UrlEncode(userName);
+            return View();
+        }
     }
 }
