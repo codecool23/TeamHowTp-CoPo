@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcInfoSenderService", "PcIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcInfoModels", "PcInfoModels\PcInfoModels.csproj", "{ABFA214C-9C3F-4F00-8C8B-A7F4AF655A39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{711E7680-F3E9-4051-8D4F-1AC535856F49}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{ABFA214C-9C3F-4F00-8C8B-A7F4AF655A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFA214C-9C3F-4F00-8C8B-A7F4AF655A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABFA214C-9C3F-4F00-8C8B-A7F4AF655A39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{711E7680-F3E9-4051-8D4F-1AC535856F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{711E7680-F3E9-4051-8D4F-1AC535856F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{711E7680-F3E9-4051-8D4F-1AC535856F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{711E7680-F3E9-4051-8D4F-1AC535856F49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

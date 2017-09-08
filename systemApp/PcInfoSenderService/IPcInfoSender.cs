@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using PcInfoModels;
+using System.ServiceProcess;
 
 namespace PcInfoSenderService
 {
@@ -15,6 +16,9 @@ namespace PcInfoSenderService
         RuntimeInfo GetRuntimeInformation();
 
         [OperationContract]
-        string GetDeviceInformation(string stringIn);
+        List<DiskSpace> GetDeviceInformation(string stringIn);
+
+        [OperationContract]
+        ServiceController[] GetAllServices();
     }
 }
