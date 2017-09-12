@@ -261,3 +261,12 @@ __pycache__/
 *.pyc
 /systemApp/.vs/config/applicationhost.config
 /systemApp/.vs/systemApp/v15/.suo
+/systemApp/.vs/config/applicationhost.config
+/systemApp/.vs/config/applicationhost.config
+/systemApp/.vs/config/applicationhost.config
+/systemApp/.vs/config/applicationhost.config
+/systemApp/.vs/systemApp/v15/.suo
+/systemApp/.vs/systemApp/v15/sqlite3/storage.ide
+/systemApp/PcInfoModels/RuntimeInfo.cs
+/systemApp/systemApp/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/systemApp/systemApp/obj/Debug/systemApp.csproj.CoreCompileInputs.cache
