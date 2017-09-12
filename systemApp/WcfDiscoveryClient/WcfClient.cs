@@ -1,7 +1,11 @@
-﻿using System;
+﻿using PcInfoModels;
+using PcInfoSenderService;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Discovery;
-using WcfLibrary;
+using System.ServiceProcess;
 
 namespace WcfDiscoveryClient
 {
@@ -9,46 +13,43 @@ namespace WcfDiscoveryClient
     {
         public static void Main(string[] args)
         {
-            System.Threading.Thread.Sleep(4000);
             WcfClient_SetupChannel();
-            System.Threading.Thread.Sleep(2000);
-            WcfClient_Ping();
+
+            // We can use our WCF service methods as follows:
+            List<PcInfoModels.Process> p = channel.GetAllProcess();
+            List<Service> s = channel.GetAllServices();
+            RuntimeInfo r = channel.GetRuntimeInformation();
+            List<DiskSpace> d = channel.GetDeviceInformation();
         }
 
-        private static IWcfTestMessage channel;
+        private static PcInfoSenderService.IPcInfoSender channel;
 
-        public static Uri WcfClient_DiscoverChannel()
+        public static List<Uri> WcfClient_DiscoverChannel()
         {
+            List<Uri> allUri = new List<Uri>();
             var discoveryclient = new DiscoveryClient(new UdpDiscoveryEndpoint());
-            FindCriteria findcriteria = new FindCriteria(typeof(IWcfTestMessage));
+            FindCriteria findcriteria = new FindCriteria(typeof(PcInfoSenderService.IPcInfoSender));
             findcriteria.Duration = TimeSpan.FromSeconds(5);
             FindResponse findresponse = discoveryclient.Find(findcriteria);
             foreach (EndpointDiscoveryMetadata edm in findresponse.Endpoints)
             {
-                Console.WriteLine("uri found = " + edm.Address.Uri.ToString());
+                allUri.Add(edm.Address.Uri);
             }
-            return findresponse.Endpoints[0].Address.Uri;
+            return allUri;
         }
 
         public static void WcfClient_SetupChannel()
         {
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
-            var factory = new ChannelFactory<IWcfTestMessage>(binding);
-            var uri = WcfClient_DiscoverChannel();
-            Console.WriteLine("creating channel to " + uri.ToString());
-            EndpointAddress ea = new EndpointAddress(uri);
+            binding.MaxReceivedMessageSize = 4294967295;
+            binding.TransferMode = TransferMode.Streamed;
+           
+            var factory = new ChannelFactory<PcInfoSenderService.IPcInfoSender>(binding);
+            var allUri = WcfClient_DiscoverChannel();
+            EndpointAddress ea = new EndpointAddress(allUri[0]);
             channel = factory.CreateChannel(ea);
             Console.WriteLine("channel created");
         }
-
-        public static void WcfClient_Ping()
-        {
-            Console.WriteLine("getting message from host");
-            string result = channel.Message();
-            Console.WriteLine("message result = " + result);
-            Console.ReadKey();
-        }
-
     }
 }
 

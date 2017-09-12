@@ -7,18 +7,28 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Runtime.Serialization;
 
 namespace PcInfoModels
 {
+    [DataContract]
     public class RuntimeInfo
     {
+        [DataMember]
         public TimeSpan ComputerUpTime { get; set; }
+        [DataMember]
         public string ComputerName { get; set; }
+        [DataMember]
         public string OSInfo { get; set; }
+        [DataMember]
         public long TotalMemorySize { get; set; }
+        [DataMember]
         public DateTime InstallDate { get; set; }
+        [DataMember]
         public int ProcessorCount { get; set; }
+        [DataMember]
         public string InputLocale { get; set; }
+        [DataMember]
         public string SystemLocale { get; set; }
 
         public RuntimeInfo()

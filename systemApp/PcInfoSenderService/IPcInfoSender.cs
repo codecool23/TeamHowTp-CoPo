@@ -17,12 +17,12 @@ namespace PcInfoSenderService
         RuntimeInfo GetRuntimeInformation();
 
         [OperationContract]
-        List<DiskSpace> GetDeviceInformation(string stringIn);
+        List<DiskSpace> GetDeviceInformation();
 
         [OperationContract]
-        ServiceController[] GetAllServices();
+        List<Service> GetAllServices();
 
         [OperationContract]
-        Process[] GetAllProcess();
+        List<PcInfoModels.Process> GetAllProcess();
     }
 }

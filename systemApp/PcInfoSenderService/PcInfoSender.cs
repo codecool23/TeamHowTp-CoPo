@@ -18,21 +18,33 @@ namespace PcInfoSenderService
             return new RuntimeInfo();
         }
 
-        public List<DiskSpace> GetDeviceInformation(string stringIn)
+        public List<DiskSpace> GetDeviceInformation()
         {
             DiskSpace.CountSpaces();
             return DiskSpace.AllDisk;
         }
 
-        public ServiceController[] GetAllServices()
+        public List<Service> GetAllServices()
         {
-            return ServiceController.GetServices();
+            List<Service> result = new List<Service>();
+            foreach (ServiceController service in ServiceController.GetServices())
+            {
+                if (service.Status == ServiceControllerStatus.Running)
+                {
+                    result.Add(new Service(service.ServiceName));
+                }
+            }
+            return result;
         }
 
-        public Process[] GetAllProcess()
+        public List<PcInfoModels.Process> GetAllProcess()
         {
-            return Process.GetProcesses();
+            List<PcInfoModels.Process> result = new List<PcInfoModels.Process>();
+            foreach (System.Diagnostics.Process proc in System.Diagnostics.Process.GetProcesses())
+            {
+                result.Add(new PcInfoModels.Process(proc.ProcessName, proc.Id));
+            }
+            return result;
         }
-        
     }
 }

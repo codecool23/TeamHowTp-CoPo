@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,9 +52,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WcfLibrary\WcfLibrary.csproj">
-      <Project>{51919492-3834-4d12-a332-89d074d1653d}</Project>
-      <Name>WcfLibrary</Name>
+    <ProjectReference Include="..\PcInfoModels\PcInfoModels.csproj">
+      <Project>{abfa214c-9c3f-4f00-8c8b-a7f4af655a39}</Project>
+      <Name>PcInfoModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PcInfoSenderService\PcInfoSenderService.csproj">
+      <Project>{148170f2-df8d-4e48-85ed-6ac8113a5a29}</Project>
+      <Name>PcInfoSenderService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

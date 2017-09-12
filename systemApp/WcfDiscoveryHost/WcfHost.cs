@@ -4,7 +4,7 @@ using System.ServiceModel;
 using System.ServiceModel.Discovery;
 using System.ServiceModel.Description;
 using System.Net;
-using WcfLibrary;
+using PcInfoSenderService;
 
 namespace WcfDiscoveryHost
 {
@@ -20,8 +20,8 @@ namespace WcfDiscoveryHost
         public static void WcfHost_Open()
         {
             string hostname = Dns.GetHostEntry(Dns.GetHostName()).AddressList.First(f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
-            var baseAddress = new UriBuilder("http", hostname, 2000, "WcfTestMessage");
-            var host = new ServiceHost(typeof(WcfTestMessage), baseAddress.Uri);
+            var baseAddress = new UriBuilder("http", hostname, 8000, "PcInfoSender");
+            var host = new ServiceHost(typeof(PcInfoSenderService.PcInfoSender), baseAddress.Uri);
 
             // enable processing of discovery messages.  use UdpDiscoveryEndpoint to enable listening. use EndpointDiscoveryBehavior for fine control.
             host.Description.Behaviors.Add(new ServiceDiscoveryBehavior());
@@ -37,7 +37,7 @@ namespace WcfDiscoveryHost
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             binding.MaxReceivedMessageSize = 4294967295;
             binding.TransferMode = TransferMode.Streamed;
-            host.AddServiceEndpoint(typeof(IWcfTestMessage), binding, "");
+            host.AddServiceEndpoint(typeof(PcInfoSenderService.IPcInfoSender), binding, "");
             host.Open();
             Console.WriteLine("host open at " + baseAddress);
         }
