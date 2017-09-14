@@ -25,12 +25,19 @@
                     <th>IP</th>
                     <th>Name</th>
                 </tr>
-            </thead>
+            </thead>           
             <tbody>
-                <tr>
-                    <td>192.168.161.133</td>
-                    <td>John</td>
-                </tr>
+                @{var myurl = Url.Action("Info", "Home", new { IP = "192.133.133.133", userName = "myName" }); }
+                System.Diagnostics.Debug.WriteLine(@myurl);
+                
+                <!--Generates a fully qualified URL to an action method by using the specified action name, controller name, and route values.-->
+                @foreach (var x in ConnectionManager.connectionList)
+                {
+                    <a href="@Url.Action("Info", "Home", new { IP = @x.IP, userName = @x.Name })">info</a>
+                    <tr onclick="location.href = '@(Url.Action("Info", "Home", new { userName = @x.Name }))'">
+                        <td>@x.IP</td>
+                        <td>@x.Name</td>
+                    </tr>}                   
             </tbody>
         </table>        
     </div>
