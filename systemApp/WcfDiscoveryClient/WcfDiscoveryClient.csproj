@@ -60,6 +60,14 @@
       <Project>{148170f2-df8d-4e48-85ed-6ac8113a5a29}</Project>
       <Name>PcInfoSenderService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\systemApp\systemApp.csproj">
+      <Project>{67e029ee-5a9a-424d-a092-c9f4a5119018}</Project>
+      <Name>systemApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfDiscoveryHost\WcfDiscoveryHost.csproj">
+      <Project>{e1533e74-e138-4a5d-8e9e-fb4a73fb0744}</Project>
+      <Name>WcfDiscoveryHost</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

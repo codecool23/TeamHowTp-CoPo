@@ -17,6 +17,7 @@ namespace systemApp.Controllers
         {
             ViewBag.Message = "List of the available connections";
 
+
             return View();
         }
 

@@ -11,6 +11,12 @@ namespace systemApp
 {
     public class ConnectionManager
     {
+        public static List<Uri> allUri;
+        
+        //?
+        public static void getAllUri() {
+
+        }
         public static List<Models.TemporaryConnection> connectionList = new List<Models.TemporaryConnection>
         {
            new Models.TemporaryConnection(){IP = "192.168.161.133", Name = "John"},

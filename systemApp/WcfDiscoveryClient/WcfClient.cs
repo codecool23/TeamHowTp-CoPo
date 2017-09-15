@@ -35,6 +35,8 @@ namespace WcfDiscoveryClient
             {
                 allUri.Add(edm.Address.Uri);
             }
+            //?
+            systemApp.ConnectionManager.allUri = allUri;
             return allUri;
         }
 
