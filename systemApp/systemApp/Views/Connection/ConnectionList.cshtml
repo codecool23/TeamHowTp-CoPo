@@ -33,7 +33,7 @@
                 <!--Generates a fully qualified URL to an action method by using the specified action name, controller name, and route values.-->
                 @foreach (var x in ConnectionManager.connectionList)
                 {
-                    <a href="@Url.Action("Info", "Home", new { IP = @x.IP, userName = @x.Name })">info</a>
+                    <a href="@Url.Action("Index", "Info", new { IP = @x.IP })">info</a>
                     <tr onclick="location.href = '@(Url.Action("Info", "Home", new { userName = @x.Name }))'">
                         <td>@x.IP</td>
                         <td>@x.Name</td>

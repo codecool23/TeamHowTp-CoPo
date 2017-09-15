@@ -11,21 +11,6 @@ namespace systemApp.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult Connections()
-        {
-            ViewBag.Message = "List of the available connections";
-
-
-            return View();
-        }
-
-        //[Route("infos/{userName}")]
-        public ActionResult Info(string userName)
-        {
-            ViewData["Name"] = Server.UrlEncode(userName);
-            return View();
-        }
+        }       
     }
 }

@@ -9,7 +9,7 @@ using System.ServiceProcess;
 
 namespace WcfDiscoveryClient
 {
-    class WcfClient
+    public class WcfClient
     {
         public static void Main(string[] args)
         {
@@ -35,8 +35,7 @@ namespace WcfDiscoveryClient
             {
                 allUri.Add(edm.Address.Uri);
             }
-            //?
-            systemApp.ConnectionManager.allUri = allUri;
+            //systemApp.ConnectionManager.allUri = allUri;
             return allUri;
         }
 

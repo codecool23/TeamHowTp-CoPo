@@ -5,18 +5,23 @@ using System.Web;
 
 namespace systemApp.Models
 {
-    public class TemporaryConnection
+    public class Connection
     {
         public string IP { get; set; }
         public string Name { get; set; }
 
-        public TemporaryConnection(string ip, string name)
+        public Connection(string ip, string name)
         {
             IP = ip;
             Name = name;
         }
 
-        public TemporaryConnection()
+        public Connection(string ip)
+        {
+            IP = ip;
+        }
+
+        public Connection()
         {
         }
     }
