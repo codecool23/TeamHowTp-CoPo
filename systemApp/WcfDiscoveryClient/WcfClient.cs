@@ -6,25 +6,17 @@ using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Discovery;
 using System.ServiceProcess;
+using System.Threading.Tasks;
 
 namespace WcfDiscoveryClient
 {
-    class WcfClient
+    public class WcfClient
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            WcfClient_SetupChannel();
-
-            // We can use our WCF service methods as follows:
-            List<PcInfoModels.Process> p = channel.GetAllProcess();
-            List<Service> s = channel.GetAllServices();
-            RuntimeInfo r = channel.GetRuntimeInformation();
-            List<DiskSpace> d = channel.GetDeviceInformation();
         }
 
-        private static PcInfoSenderService.IPcInfoSender channel;
-
-        public static List<Uri> WcfClient_DiscoverChannel()
+        public static async Task<List<Uri>> WcfClient_DiscoverChannel()
         {
             List<Uri> allUri = new List<Uri>();
             var discoveryclient = new DiscoveryClient(new UdpDiscoveryEndpoint());
@@ -35,20 +27,19 @@ namespace WcfDiscoveryClient
             {
                 allUri.Add(edm.Address.Uri);
             }
+            //systemApp.ConnectionManager.allUri = allUri;
             return allUri;
         }
 
-        public static void WcfClient_SetupChannel()
+        public static IPcInfoSender WcfClient_SetupChannel(string IP)
         {
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             binding.MaxReceivedMessageSize = 4294967295;
             binding.TransferMode = TransferMode.Streamed;
            
             var factory = new ChannelFactory<PcInfoSenderService.IPcInfoSender>(binding);
-            var allUri = WcfClient_DiscoverChannel();
-            EndpointAddress ea = new EndpointAddress(allUri[0]);
-            channel = factory.CreateChannel(ea);
-            Console.WriteLine("channel created");
+            EndpointAddress ea = new EndpointAddress(IP);
+            return factory.CreateChannel(ea);
         }
     }
 }

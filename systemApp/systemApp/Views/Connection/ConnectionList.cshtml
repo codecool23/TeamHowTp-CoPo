@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -18,19 +18,26 @@
         <h1>Connectionlist</h1>
         <p class="lead">Connections available</p>
     </div>
+
+    <button title="refresh" onclick="location.href = '@(Url.Action("Index", "Connection"))'">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+
     <div class="container">
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover table-responsive ipAddressRow">
             <thead>
                 <tr>
                     <th>IP</th>
                     <th>Name</th>
                 </tr>
-            </thead>
+            </thead>           
             <tbody>
-                <tr>
-                    <td>192.168.161.133</td>
-                    <td>John</td>
-                </tr>
+                @foreach (var x in ConnectionManager.connectionList)
+                {
+                    <tr title="click for more info" onclick="location.href = '@(Url.Action("Index", "Info",  new { IP = @x.IP }))'">
+                        <td>@x.IP</td>
+                        <td>@x.Name</td>
+                    </tr>}                   
             </tbody>
         </table>        
     </div>

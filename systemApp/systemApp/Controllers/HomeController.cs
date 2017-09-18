@@ -11,13 +11,6 @@ namespace systemApp.Controllers
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult Connections()
-        {
-            ViewBag.Message = "List of the available connections";
-
-            return View();
-        }
+        }       
     }
 }
