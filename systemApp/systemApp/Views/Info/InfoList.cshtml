@@ -51,7 +51,7 @@
                     <tr>
                     <td class="col-sm-4">@process.ProcessName</td>
                     <td class="col-sm-4">@process.Id</td>
-                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove"></span></td>
+                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove" onclick="location.href = '@(Url.Action("KillProcess", "Info",  new { pid = process.Id, IP = ViewData["ip"] }))'"></span></td>
                 </tr>
                 }
             }
