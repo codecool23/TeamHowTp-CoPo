@@ -26,3 +26,8 @@ textarea {
 .ipAddressRow tr {
     cursor: pointer;
 }
+
+.glyphicon-remove:hover {
+    cursor: pointer;
+    color: red;
+}

@@ -37,21 +37,21 @@
         }
     </div>
 
-    <div>
+    <div class="row">
         <h1>Running Processes: </h1>
         @{List<Process> processes = (List<Process>)ViewData["processes"];}
         <table class="table-hover">
             <tr>
-                <th>Process name</th>
-                <th>PID</th>
-                <th>Action</th>
+                <th class="col-sm-4">Process name</th>
+                <th class="col-sm-4">PID</th>
+                <th class="col-sm-4">Action</th>
             </tr>
             @{foreach (Process process in processes)
             {
                     <tr>
-                        <td>@process.ProcessName</td>
-                        <td>@process.Id</td>
-                    <td><span class="glyphicon glyphicon-remove"></span></td>
+                    <td class="col-sm-4">@process.ProcessName</td>
+                    <td class="col-sm-4">@process.Id</td>
+                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
                 }
             }
