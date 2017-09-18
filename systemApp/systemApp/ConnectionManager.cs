@@ -8,6 +8,8 @@ using System.Net.NetworkInformation;
 using System.IO;
 using WcfDiscoveryClient;
 using System.Threading.Tasks;
+using PcInfoSenderService;
+using PcInfoModels;
 
 namespace systemApp
 {
@@ -19,7 +21,9 @@ namespace systemApp
             connectionList.Clear();
             var allConnections = await WcfClient.WcfClient_DiscoverChannel();
             foreach (var x in allConnections){
-                connectionList.Add(new Models.Connection(x.ToString()));
+                IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(x.ToString());
+                RuntimeInfo runtimeInfo = channel.GetRuntimeInformation();
+                connectionList.Add(new Models.Connection(x.ToString(), runtimeInfo.ComputerName));
             }
         }   
     }

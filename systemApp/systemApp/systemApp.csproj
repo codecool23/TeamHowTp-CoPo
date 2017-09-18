@@ -207,6 +207,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PcInfoModels\PcInfoModels.csproj">
+      <Project>{ABFA214C-9C3F-4F00-8C8B-A7F4AF655A39}</Project>
+      <Name>PcInfoModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PcInfoSenderService\PcInfoSenderService.csproj">
+      <Project>{148170F2-DF8D-4E48-85ED-6AC8113A5A29}</Project>
+      <Name>PcInfoSenderService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WcfDiscoveryClient\WcfDiscoveryClient.csproj">
       <Project>{a9763f87-1942-4efe-b0a2-8539c9189f88}</Project>
       <Name>WcfDiscoveryClient</Name>
