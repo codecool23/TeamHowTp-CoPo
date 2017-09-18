@@ -30,6 +30,21 @@ namespace PcInfoSenderService.Test
             Assert.That(sut.GetDeviceInformation(), Is.Not.Null);
         }
 
+        [Test]
+        public void ShouldGetRuntimeInformationHasOneCore()
+        {
+            Assert.That(sut.GetRuntimeInformation().ProcessorCount, Is.AtLeast(1));
+        }
+
+        [Test]
+        public void ShouldGetDeviceInformationHasCDrive()
+        {
+            List<string> disknames = new List<string>();
+            foreach ( PcInfoModels.DiskSpace disk in sut.GetDeviceInformation() )
+            { disknames.Add(disk.Name); }; 
+            Assert.That(disknames, Has.Member("C:\\"));
+        }
+
         [OneTimeTearDown]
         public void TestTearDown()
         {
