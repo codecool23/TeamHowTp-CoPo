@@ -7,18 +7,19 @@ using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.IO;
 using WcfDiscoveryClient;
+using System.Threading.Tasks;
 
 namespace systemApp
 {
     public class ConnectionManager
     {
         public static List<Models.Connection> connectionList = new List<Models.Connection>();
-        public static List<Uri> allUri = new List<Uri>();
 
-        public static void getAllUri() {
-            foreach (var x in WcfClient.WcfClient_DiscoverChannel()){
-                allUri.Add(x);
-                connectionList.Add(new Models.Connection() { IP = x.ToString() });
+        public static async Task GetAllUri() {
+            connectionList.Clear();
+            var allConnections = await WcfClient.WcfClient_DiscoverChannel();
+            foreach (var x in allConnections){
+                connectionList.Add(new Models.Connection(x.ToString()));
             }
         }   
     }

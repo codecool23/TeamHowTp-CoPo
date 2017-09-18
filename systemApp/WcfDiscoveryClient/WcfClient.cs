@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Discovery;
 using System.ServiceProcess;
+using System.Threading.Tasks;
 
 namespace WcfDiscoveryClient
 {
@@ -24,7 +25,7 @@ namespace WcfDiscoveryClient
 
         private static PcInfoSenderService.IPcInfoSender channel;
 
-        public static List<Uri> WcfClient_DiscoverChannel()
+        public static async Task<List<Uri>> WcfClient_DiscoverChannel()
         {
             List<Uri> allUri = new List<Uri>();
             var discoveryclient = new DiscoveryClient(new UdpDiscoveryEndpoint());
@@ -39,14 +40,14 @@ namespace WcfDiscoveryClient
             return allUri;
         }
 
-        public static void WcfClient_SetupChannel()
+        public static async void WcfClient_SetupChannel()
         {
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             binding.MaxReceivedMessageSize = 4294967295;
             binding.TransferMode = TransferMode.Streamed;
            
             var factory = new ChannelFactory<PcInfoSenderService.IPcInfoSender>(binding);
-            var allUri = WcfClient_DiscoverChannel();
+            var allUri = await WcfClient_DiscoverChannel();
             EndpointAddress ea = new EndpointAddress(allUri[0]);
             channel = factory.CreateChannel(ea);
             Console.WriteLine("channel created");
