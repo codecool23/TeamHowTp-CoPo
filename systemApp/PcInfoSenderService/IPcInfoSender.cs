@@ -24,5 +24,8 @@ namespace PcInfoSenderService
 
         [OperationContract]
         List<PcInfoModels.Process> GetAllProcess();
+
+        [OperationContract]
+        void KillProcess(int pid);
     }
 }

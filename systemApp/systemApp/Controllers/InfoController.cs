@@ -11,7 +11,6 @@ namespace systemApp.Controllers
 {
     public class InfoController : Controller
     {
-        // GET: InfoList
         public ActionResult Index(string IP)
         {
             IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
@@ -20,7 +19,15 @@ namespace systemApp.Controllers
             ViewData["diskSpaceInfo"] = channel.GetDeviceInformation();
             ViewData["processes"] = channel.GetAllProcess();
             ViewData["services"] = channel.GetAllServices();
+            ViewData["ip"] = IP;
             return View("InfoList");
+        }
+
+        public ActionResult KillProcess(int pid, string IP)
+        {
+            IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
+            channel.KillProcess(pid);
+            return RedirectToAction("Index", "Info", new { IP = IP });
         }
     }
 }

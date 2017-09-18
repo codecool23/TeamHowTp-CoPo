@@ -46,5 +46,19 @@ namespace PcInfoSenderService
             }
             return result;
         }
+
+        public void KillProcess(int pid)
+        {
+            try
+            {
+                System.Diagnostics.Process p = System.Diagnostics.Process.GetProcessById(pid);
+                p.Kill();
+            }
+            catch
+            {
+                Console.WriteLine("Something went wrong. Process cannot be killed");
+            }
+            
+        }
     }
 }
