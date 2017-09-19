@@ -11,14 +11,19 @@ namespace WcfDiscoveryHost
 
     class WcfHost
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static void Main(string[] args)
         {
+            log.Info("Hello logging world!");
             WcfHost_Open();
+            Console.WriteLine("Hit enter");
             Console.ReadKey();
         }
 
         public static void WcfHost_Open()
         {
+            log.Debug("host open");
             string hostname = Dns.GetHostEntry(Dns.GetHostName()).AddressList.First(f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
             var baseAddress = new UriBuilder("http", hostname, 8000, "PcInfoSender");
             var host = new ServiceHost(typeof(PcInfoSenderService.PcInfoSender), baseAddress.Uri);
