@@ -12,7 +12,7 @@ namespace systemApp.Controllers
     public class InfoController : Controller
     {
         public ActionResult Index(string IP)
-        {
+        {            
             IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
 
             ViewData["runtimeInfos"] = channel.GetRuntimeInformation();

@@ -39,7 +39,13 @@
                         <td>@x.Name</td>
                     </tr>}                   
             </tbody>
-        </table>        
+        </table>
+        
+        <form action="@(Url.Action("Index", "Info"))" method="post">
+            <input type="text" name="IP" />
+            <input type="submit" name="submitIp" value="Go!"/>
+        </form>
+
     </div>
 </body>
 </html>
