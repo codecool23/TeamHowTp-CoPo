@@ -45,10 +45,10 @@ namespace PcInfoSenderService.Test
         [Test]
         public void ShouldGetDeviceInformationHasCDrive()
         {
-            List<string> disknames = new List<string>();
+            List<string> diskNames = new List<string>();
             foreach ( PcInfoModels.DiskSpace disk in sut.GetDeviceInformation() )
-            { disknames.Add(disk.Name); }; 
-            Assert.That(disknames, Has.Member("C:\\"));
+            { diskNames.Add(disk.Name); }; 
+            Assert.That(diskNames, Has.Member("C:\\"));
         }
 
         [Test]
@@ -61,6 +61,24 @@ namespace PcInfoSenderService.Test
         public void ShouldGetAllProcess()
         {
             Assert.That(sut.GetAllProcess(), Is.Not.Null);
+        }
+
+        [Test]
+        public void ShouldGetAllProcessHasProcess()
+        {
+            List<string> procNames = new List<string>();
+            foreach (PcInfoModels.Process proc in sut.GetAllProcess())
+            { procNames.Add(proc.ProcessName); };
+            Assert.That(procNames, Has.Member("winlogon"));
+        }
+
+        [Test]
+        public void ShouldKillProcess()
+        {
+            System.Diagnostics.Process cmd  = System.Diagnostics.Process.Start("cmd.exe");
+            sut.KillProcess(cmd.Id);
+            System.Diagnostics.Process[] proc = System.Diagnostics.Process.GetProcessesByName("cmd.exe");
+            Assert.True(proc.Length == 0);
         }
 
         [OneTimeTearDown]
