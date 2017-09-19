@@ -1,6 +1,53 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body, html {
+    height: 100%;
+    font: 400 15px/1.8 "Lato", sans-serif;
+    color: #777;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("desktop.jpeg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    opacity: 0.80;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.half-opacity {
+    background: rgba(0,0,0,0.5);
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+#base_footer {
+    color: black;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+
+.caption span.border {
+        background-color: #111;
+        color: #fff;
+        padding: 18px;
+        font-size: 25px;
+        letter-spacing: 10px;
 }
 
 /* Set padding to keep content from hitting the edges */
