@@ -67,10 +67,9 @@
         }
     </div>
 
-    @{ var ip = ViewData["ip"]; }  
-    
-    @{ string actualUrl = ip.ToString();
-        System.Diagnostics.Debug.Write(actualUrl);}
+    @{ var ip = ViewData["ip"]; }      
+    @{ string actualUrl = ip.ToString();}
+
     <a href=@actualUrl class="btn-primary btn-lg" style="text-align: center" download>Saving</a>
 </body>
 </html>
