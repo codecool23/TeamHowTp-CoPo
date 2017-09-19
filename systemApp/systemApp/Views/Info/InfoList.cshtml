@@ -66,13 +66,18 @@
             }
         }
     </div>
-    <p>@ViewData["ip"]</p>
+    @{ var ip = ViewData["ip"]; }
+    <p>@ip</p>
     
-    @*@{var ip = ViewData["ip"].ToString();}
-    @{System.Diagnostics.Debug.WriteLine(ip);}
-    @{ string actualUrl = "http://localhost:56002/Info?IP=" + ip + "%3A8000%2FPcInfoSender";
-        System.Diagnostics.Debug.Write(actualUrl);}*@
-    @*<a href=@actualUrl download>"SAving"*@
-    @*</a>*@
+    
+    @{ string actualUrl = ip.ToString();
+        System.Diagnostics.Debug.Write(actualUrl);}
+    <a href=@actualUrl class="btn-primary" download>"Saving"
+    </a>
+    <script>
+        var actualUrl = window.location;
+        document.getElementById("link").setAttribute("href", actualUrl);
+    </script>
+    <a id="link" download>this is a link</a>
 </body>
 </html>
