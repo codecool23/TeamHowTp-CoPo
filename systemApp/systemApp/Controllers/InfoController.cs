@@ -12,15 +12,22 @@ namespace systemApp.Controllers
     public class InfoController : Controller
     {
         public ActionResult Index(string IP)
-        {            
-            IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
-
-            ViewData["runtimeInfos"] = channel.GetRuntimeInformation();
-            ViewData["diskSpaceInfo"] = channel.GetDeviceInformation();
-            ViewData["processes"] = channel.GetAllProcess();
-            ViewData["services"] = channel.GetAllServices();
-            ViewData["ip"] = IP;
-            return View("InfoList");
+        {
+            try
+            {
+                IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
+                ViewData["runtimeInfos"] = channel.GetRuntimeInformation();
+                ViewData["diskSpaceInfo"] = channel.GetDeviceInformation();
+                ViewData["processes"] = channel.GetAllProcess();
+                ViewData["services"] = channel.GetAllServices();
+                ViewData["ip"] = IP;
+                return View("InfoList");
+            }
+            catch(Exception e)
+            {
+                ViewData["errorMessage"] = "The requested IP address cannot be reached.";
+                return View("~/Views/Connection/ConnectionList.cshtml");
+            }
         }
 
         public ActionResult KillProcess(int pid, string IP)
