@@ -29,5 +29,6 @@ namespace systemApp.Controllers
             channel.KillProcess(pid);
             return RedirectToAction("Index", "Info", new { IP = IP });
         }
+
     }
 }

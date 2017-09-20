@@ -11,65 +11,80 @@
     <title></title>
 </head>
 <body>
-    <div>
-        @{ RuntimeInfo info = (RuntimeInfo)ViewData["runtimeInfos"];}
-        <h1>Runtime Information:</h1>
-        <p>Computer Name: @info.ComputerName</p>
-        <p>Operation System: @info.OSInfo</p>
-        <p>Operation System Install Date: @info.InstallDate</p>
-        <p>Computer Up Time: @info.ComputerUpTime</p>
-        <p>Total Memory Size: @info.TotalMemorySize</p>
-        <p>Processor Count: @info.ProcessorCount</p>
-        <p>Input Language: @info.InputLocale</p>
-        <p>Language for non Unicode programs: @info.SystemLocale</p>
-    </div>
 
-    <div>
-        <h1>Disk Space Information:</h1>
-        @{ List<DiskSpace> diskSpace = (List<DiskSpace>)ViewData["diskSpaceInfo"];
+    <div id="content">
+
+        <div>
+            @{ RuntimeInfo info = (RuntimeInfo)ViewData["runtimeInfos"];}
+            <h1>Runtime Information:</h1>
+            <p>Computer Name: @info.ComputerName</p>
+            <p>Operation System: @info.OSInfo</p>
+            <p>Operation System Install Date: @info.InstallDate</p>
+            <p>Computer Up Time: @info.ComputerUpTime</p>
+            <p>Total Memory Size: @info.TotalMemorySize</p>
+            <p>Processor Count: @info.ProcessorCount</p>
+            <p>Input Language: @info.InputLocale</p>
+            <p>Language for non Unicode programs: @info.SystemLocale</p>
+        </div>
+
+        <div>
+            <h1>Disk Space Information:</h1>
+            @{ List<DiskSpace> diskSpace = (List<DiskSpace>)ViewData["diskSpaceInfo"];
             foreach (DiskSpace d in diskSpace)
             {
-                <p>Name: @d.Name</p>
-                <p>Total free space: @d.TotalFreeSpace</p>
-                <p>Total reserved space: @d.TotalReservedSpace</p>
-                <p>Total space: @d.TotalSpace</p>
-            }
-        }
-    </div>
-
-    <div class="row">
-        <h1>Running Processes: </h1>
-        @{List<Process> processes = (List<Process>)ViewData["processes"];}
-        <table class="table-hover">
-            <tr>
-                <th class="col-sm-4">Process name</th>
-                <th class="col-sm-4">PID</th>
-                <th class="col-sm-4">Action</th>
-            </tr>
-            @{foreach (Process process in processes)
-                {
-                    <tr>
-                    <td class="col-sm-4">@process.ProcessName</td>
-                    <td class="col-sm-4">@process.Id</td>
-                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove" onclick="location.href = '@(Url.Action("KillProcess", "Info", new { pid = process.Id, IP = ViewData["ip"] }))'"></span></td>
-                </tr>
+                    <p>Name: @d.Name</p>
+                    <p>Total free space: @d.TotalFreeSpace</p>
+                    <p>Total reserved space: @d.TotalReservedSpace</p>
+                    <p>Total space: @d.TotalSpace</p>
                 }
             }
-        </table>
-    </div>
+        </div>
 
-    <div>
-        <h1>Running Services: </h1>
-        @{List<Service> services = (List<Service>)ViewData["services"];}
-        @{foreach (Service service in services) {
-                <p>@service.Name</p>
+        <div class="row">
+            <h1>Running Processes: </h1>
+            @{List<Process> processes = (List<Process>)ViewData["processes"];}
+            <table class="table-hover">
+                <tr>
+                    <th class="col-sm-4">Process name</th>
+                    <th class="col-sm-4">PID</th>
+                    <th class="col-sm-4">Action</th>
+                </tr>
+                @{foreach (Process process in processes)
+                    {
+                        <tr>
+                            <td class="col-sm-4">@process.ProcessName</td>
+                            <td class="col-sm-4">@process.Id</td>
+                            <td class="col-sm-4"><span class="glyphicon glyphicon-remove" onclick="location.href = '@(Url.Action("KillProcess", "Info", new { pid = process.Id, IP = ViewData["ip"] }))'"></span></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+
+        <div>
+            <h1>Running Services: </h1>
+            @{List<Service> services = (List<Service>)ViewData["services"];}
+            @{foreach (Service service in services)
+                {
+                    <p>@service.Name</p>
+                }
             }
-        }
+        </div>
+
     </div>
 
-    @{ var ip = ViewData["ip"]; }      
-    @{ string actualUrl = ip.ToString();}
+    <button onclick="download()" class="btn-primary btn-lg">Click me</button>
 
-    <a href=@actualUrl class="btn-primary btn-lg" style="text-align: center" download>Saving</a>
+    <script>
+        function download() {
+            var a = document.body.appendChild(
+                document.createElement("a")
+            );
+            a.download = "export.html";
+            a.href = "data:text/html," + document.getElementById("content").innerHTML; // Grab the HTML
+            a.click(); // Trigger a click on the element
+        }
+    </script>
+
 </body>
 </html>
