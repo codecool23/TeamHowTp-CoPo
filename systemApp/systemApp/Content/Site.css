@@ -39,7 +39,7 @@
     color: #dcdcdc;
 }
 
-custom-input-field:focus {
+input:focus {
     outline: none;
 }
 
