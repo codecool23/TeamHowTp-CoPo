@@ -47,11 +47,11 @@
                 <th class="col-sm-4">Action</th>
             </tr>
             @{foreach (Process process in processes)
-            {
+                {
                     <tr>
                     <td class="col-sm-4">@process.ProcessName</td>
                     <td class="col-sm-4">@process.Id</td>
-                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove" onclick="location.href = '@(Url.Action("KillProcess", "Info",  new { pid = process.Id, IP = ViewData["ip"] }))'"></span></td>
+                    <td class="col-sm-4"><span class="glyphicon glyphicon-remove" onclick="location.href = '@(Url.Action("KillProcess", "Info", new { pid = process.Id, IP = ViewData["ip"] }))'"></span></td>
                 </tr>
                 }
             }
@@ -61,10 +61,15 @@
     <div>
         <h1>Running Services: </h1>
         @{List<Service> services = (List<Service>)ViewData["services"];}
-        @{foreach (Service service in services){
+        @{foreach (Service service in services) {
                 <p>@service.Name</p>
-        }
+            }
         }
     </div>
+
+    @{ var ip = ViewData["ip"]; }      
+    @{ string actualUrl = ip.ToString();}
+
+    <a href=@actualUrl class="btn-primary btn-lg" style="text-align: center" download>Saving</a>
 </body>
 </html>
