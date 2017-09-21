@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Co-Po </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="bg" id="container">
+        <div class="navbar half-opacity navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header custom-color">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Co-Po", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="custom-color">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="custom-color">@Html.ActionLink("Connections", "Index", "Connection")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content" id="body">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <p id="base_footer">&copy; @DateTime.Now.Year - TeamHowTo</p>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/download")
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>
