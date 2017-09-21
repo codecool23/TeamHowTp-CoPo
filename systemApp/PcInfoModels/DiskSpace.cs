@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using PcInfoModelsFormatter;
 
 namespace PcInfoModels
 {
@@ -16,18 +17,18 @@ namespace PcInfoModels
         [DataMember]
         public string Name { get; set; }
         [DataMember]
-        public long TotalFreeSpace { get; set; }
+        public string TotalFreeSpace { get; set; }
         [DataMember]
-        public long TotalReservedSpace { get; set; }
+        public string TotalReservedSpace { get; set; }
         [DataMember]
-        public long TotalSpace { get; set; }
+        public string TotalSpace { get; set; }
 
         private DiskSpace(string name, long freeSpace, long reservedSpace, long totalSpace)
         {
             Name = name;
-            TotalFreeSpace = freeSpace;
-            TotalReservedSpace = reservedSpace;
-            TotalSpace = totalSpace;
+            TotalFreeSpace = ByteFormatter.Format(freeSpace);
+            TotalReservedSpace = ByteFormatter.Format(reservedSpace);
+            TotalSpace = ByteFormatter.Format(totalSpace);
         }
 
         public static void CountSpaces()

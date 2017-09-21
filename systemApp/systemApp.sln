@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "systemApp", "systemApp\systemApp.csproj", "{67E029EE-5A9A-424D-A092-C9F4A5119018}"
 EndProject
@@ -15,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcInfoSenderService.Test", "PcInfoSenderService.Test\PcInfoSenderService.Test.csproj", "{757FD750-A777-4773-B6B1-548AC68C999A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcInfoModels.Test", "PcInfoModels.Test\PcInfoModels.Test.csproj", "{F8A46DD6-E216-4179-A5C6-9FCC1AF7E468}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcInfoModelsFormatter", "ByteFormatter\PcInfoModelsFormatter.csproj", "{3B6AF455-C1D6-40A7-8291-FDFB475C8447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{F8A46DD6-E216-4179-A5C6-9FCC1AF7E468}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A46DD6-E216-4179-A5C6-9FCC1AF7E468}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A46DD6-E216-4179-A5C6-9FCC1AF7E468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6AF455-C1D6-40A7-8291-FDFB475C8447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6AF455-C1D6-40A7-8291-FDFB475C8447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6AF455-C1D6-40A7-8291-FDFB475C8447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6AF455-C1D6-40A7-8291-FDFB475C8447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

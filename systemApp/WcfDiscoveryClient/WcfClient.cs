@@ -12,10 +12,6 @@ namespace WcfDiscoveryClient
 {
     public class WcfClient
     {
-        public static void Main()
-        {
-        }
-
         public static async Task<List<Uri>> WcfClient_DiscoverChannel()
         {
             List<Uri> allUri = new List<Uri>();
