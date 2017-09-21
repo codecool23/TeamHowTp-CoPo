@@ -34,13 +34,19 @@
             <div class="col-sm-8 half-opacity container-padding">
                 <h1>Disk Space Information:</h1>
                 @{ List<DiskSpace> diskSpace = (List<DiskSpace>)ViewData["diskSpaceInfo"];
-            foreach (DiskSpace d in diskSpace)
-            {
-                        <p>Name: @d.Name</p>
-                        <p>Total free space: @d.TotalFreeSpace</p>
-                        <p>Total reserved space: @d.TotalReservedSpace</p>
-                        <p>Total space: @d.TotalSpace</p>
-                    }
+            
+                        <p>Name: @diskSpace[0].Name</p>
+                        <p>Total free space: @diskSpace[0].TotalFreeSpace</p>
+                        <p>Total reserved space: @diskSpace[0].TotalReservedSpace</p>
+                        <p>Total space: @diskSpace[0].TotalSpace</p>
+
+                        <script>
+                            (function () {
+                                window.alert("alert");
+                                generateChart(@diskSpace)
+                            })();
+                        </script>
+                    
                 }
             </div>
             <div class="col-sm-2"></div>

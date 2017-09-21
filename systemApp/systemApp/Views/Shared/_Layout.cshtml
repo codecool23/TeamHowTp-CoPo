@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Co-Po </title>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -36,6 +37,7 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/download")
+        @Scripts.Render("~/bundles/chart_canvasjs")
         @RenderSection("scripts", required: false)
     </div>
 </body>

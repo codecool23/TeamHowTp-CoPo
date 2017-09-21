@@ -29,6 +29,8 @@ namespace systemApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/chart_canvasjs").Include(
+                      "~/Scripts/chart_canvasjs.js"));
         }
     }
 }
