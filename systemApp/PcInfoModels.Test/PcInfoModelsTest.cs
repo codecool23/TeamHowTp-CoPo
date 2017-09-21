@@ -37,7 +37,7 @@ namespace PcInfoModels.Test
         [Test]
         public void ShouldGetTotalMemorySize()
         {
-            Assert.That(runTimeInfo.TotalMemorySize, Is.GreaterThan(0));
+            Assert.That(runTimeInfo.TotalMemorySize.Length, Is.GreaterThan(0));
         }
 
         [Test]
