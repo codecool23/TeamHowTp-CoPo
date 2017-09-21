@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Runtime.Serialization;
+using PcInfoModelsFormatter;
 
 namespace PcInfoModels
 {
@@ -15,13 +16,13 @@ namespace PcInfoModels
     public class RuntimeInfo
     {
         [DataMember]
-        public TimeSpan ComputerUpTime { get; set; }
+        public string ComputerUpTime { get; set; }
         [DataMember]
         public string ComputerName { get; set; }
         [DataMember]
         public string OSInfo { get; set; }
         [DataMember]
-        public long TotalMemorySize { get; set; }
+        public string TotalMemorySize { get; set; }
         [DataMember]
         public DateTime InstallDate { get; set; }
         [DataMember]
@@ -33,10 +34,10 @@ namespace PcInfoModels
 
         public RuntimeInfo()
         {
-            ComputerUpTime = GetComputerUpTime();
+            ComputerUpTime = DateFormatter.ToReadableString(GetComputerUpTime());
             ComputerName = Environment.MachineName;
             OSInfo = Environment.OSVersion.VersionString;
-            TotalMemorySize = GetTotalMemorySize();
+            TotalMemorySize = ByteFormatter.Format(GetTotalMemorySize());
             InstallDate = GetWindowsInstallationDateTime();
             ProcessorCount = Environment.ProcessorCount;
             InputLocale = InputLanguage.CurrentInputLanguage.Culture.TwoLetterISOLanguageName;
