@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{757FD750-A777-4773-B6B1-548AC68C999A}</ProjectGuid>
+    <ProjectGuid>{F8A46DD6-E216-4179-A5C6-9FCC1AF7E468}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PcInfoSenderService.Test</RootNamespace>
-    <AssemblyName>PcInfoSenderService.Test</AssemblyName>
+    <RootNamespace>PcInfoModels.Test</RootNamespace>
+    <AssemblyName>PcInfoModels.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -23,7 +23,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,24 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PcInfoSenderServiceTest.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PcInfoModels\PcInfoModels.csproj">
-      <Project>{abfa214c-9c3f-4f00-8c8b-a7f4af655a39}</Project>
-      <Name>PcInfoModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PcInfoSenderService\PcInfoSenderService.csproj">
-      <Project>{148170f2-df8d-4e48-85ed-6ac8113a5a29}</Project>
-      <Name>PcInfoSenderService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
