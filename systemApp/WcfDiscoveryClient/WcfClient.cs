@@ -16,13 +16,19 @@ namespace WcfDiscoveryClient
 
         public static void Main()
         {
-            log.Info("Hello logging world!");
-            Console.WriteLine("Hit enter");
+            log.Info("Operation started");
+            log.Info("Basic communication established");
+            log.Info("Discovering and garhering pc and remote pc information");
+            log.Info("Channel creating...");
+            log.Info("Listing compuer ips");
+            log.Info("Looking for runtime info");
+            log.Info("Sending information 3...2...1...");
             Console.ReadLine();
         }
 
         public static async Task<List<Uri>> WcfClient_DiscoverChannel()
         {
+            
             List<Uri> allUri = new List<Uri>();
             var discoveryclient = new DiscoveryClient(new UdpDiscoveryEndpoint());
             FindCriteria findcriteria = new FindCriteria(typeof(PcInfoSenderService.IPcInfoSender));
@@ -38,6 +44,7 @@ namespace WcfDiscoveryClient
 
         public static IPcInfoSender WcfClient_SetupChannel(string IP)
         {
+            
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             binding.MaxReceivedMessageSize = 4294967295;
             binding.TransferMode = TransferMode.Streamed;

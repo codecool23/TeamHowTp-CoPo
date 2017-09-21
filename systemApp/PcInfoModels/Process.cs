@@ -10,6 +10,7 @@ namespace PcInfoModels
     [DataContract]
     public class Process
     {
+
         [DataMember]
         public string ProcessName { get; set; }
         [DataMember]
@@ -17,6 +18,7 @@ namespace PcInfoModels
 
         public Process(string pName, int id)
         {
+            
             ProcessName = pName;
             Id = id;
         }

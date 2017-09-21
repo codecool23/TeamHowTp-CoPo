@@ -15,9 +15,14 @@ namespace WcfDiscoveryHost
 
         public static void Main(string[] args)
         {
-            log.Info("Hello logging world!");
+            
             WcfHost_Open();
-            Console.WriteLine("Hit enter");
+            log.Info("Opening wcf host");
+            log.Info("Endpoint listening enabled");
+            log.Info("Enable wsd1");
+            log.Info("Creating endpoint");
+            log.Info("Sending Pc information");
+            log.Info("Enable process kill function for admin users");
             Console.ReadKey();
         }
 
