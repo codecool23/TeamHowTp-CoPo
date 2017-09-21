@@ -20,7 +20,7 @@ namespace PcInfoModels.Test
         }
 
         [Test]
-        public void ShouldDiskSpaceCountSpaces()
+        public void ShouldDiskSpaceCountSpacesNumofDrives()
         {
             DiskSpace.CountSpaces();
             Assert.That(DiskSpace.AllDisk.Count(), Is.GreaterThan(0));
@@ -32,6 +32,18 @@ namespace PcInfoModels.Test
             DateTime testDate = new DateTime(1984, 1, 1, 0, 0, 0);
             Assert.True(runTimeInfo.InstallDate > testDate );
             
+        }
+
+        [Test]
+        public void ShouldGetTotalMemorySize()
+        {
+            Assert.That(runTimeInfo.TotalMemorySize, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void ShouldGetSysLocale()
+        {
+            Assert.That(runTimeInfo.SystemLocale, Is.EqualTo("en-US"));
         }
 
         [OneTimeTearDown]
