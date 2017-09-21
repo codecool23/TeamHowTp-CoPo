@@ -3,6 +3,7 @@ using PcInfoSenderService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WcfDiscoveryClient;
@@ -11,7 +12,7 @@ namespace systemApp.Controllers
 {
     public class InfoController : Controller
     {
-        public ActionResult Index(string IP)
+        public async Task<ActionResult> Index(string IP)
         {
             try
             {
@@ -26,16 +27,26 @@ namespace systemApp.Controllers
             catch(Exception e)
             {
                 ViewData["errorMessage"] = "The requested IP address cannot be reached.";
+                await ConnectionManager.GetAllUri();
                 return View("~/Views/Connection/ConnectionList.cshtml");
             }
         }
 
-        public ActionResult KillProcess(int pid, string IP)
+        public async Task<ActionResult> KillProcess(int pid, string IP)
         {
-            IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
-            channel.KillProcess(pid);
-            return RedirectToAction("Index", "Info", new { IP = IP });
+            try
+            {
+                IPcInfoSender channel = WcfClient.WcfClient_SetupChannel(IP);
+                channel.KillProcess(pid);
+                return RedirectToAction("Index", "Info", new { IP = IP });
+            }
+            catch(Exception e)
+            {
+                ViewData["errorMessage"] = "Oops, you lost connection. Try again later.";
+                await ConnectionManager.GetAllUri();
+                return View("~/Views/Connection/ConnectionList.cshtml");
+            }
+            
         }
-
     }
 }

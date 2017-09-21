@@ -13,7 +13,6 @@ namespace systemApp.Controllers
         public async Task<ActionResult> Index()
         {
             await ConnectionManager.GetAllUri();
-            ViewBag.Message = "List of the available connections";
             return View("ConnectionList");
         }        
     }
