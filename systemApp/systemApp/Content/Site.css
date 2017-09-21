@@ -1,27 +1,100 @@
 ﻿body, html {
     height: 100%;
     font: 400 15px/1.8 "Lato", sans-serif;
-    color: #777;
+    color: #dcdcdc;
+}
+
+.table tbody tr:hover td, .table tbody tr:hover th,
+.table tbody tr:focus td, .table tbody tr:focus th,
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: rgba(0,0,0,0.8);
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+.custom-button {
+    background-color: transparent;
+    border-color: #dcdcdc;
+    color: #dcdcdc;
+    border-style: solid;
+    border-radius: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.custom-button:hover, custom-button:focus {
+    outline-style: none;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.custom-input-field {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 20px;
+    color: #dcdcdc;
+}
+
+input:focus {
+    outline: none;
+}
+
+#body {
+    padding-bottom: 40px; /* Height of the footer */
+}
+
+.alert-with-margin {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold-link {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .bg {
     /* The image used */
     background-image: url("desktop.jpeg");
-    /* Full height */
-    height: 100%;
     /* Center and scale the image nicely */
     opacity: 0.80;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.custom-color a {
+    color: #dcdcdc;
+}
+
+.container-padding {
+    padding-top: 25px;
 }
 
 .half-opacity {
     background: rgba(0,0,0,0.5);
 }
 
+.row-margin {
+    margin-bottom: 15px;
+}
 .footer {
     position: absolute;
+    width: 100%;
+    height: 40px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -29,8 +102,14 @@
     text-align: center;
 }
 
+#ip-input {
+    margin-bottom:15px;
+    margin-top:15px;
+}
+
 #base_footer {
     color: black;
+    margin-bottom: 0px;
 }
 
 .caption {
@@ -43,15 +122,27 @@
 }
 
 .caption span.border {
-        background-color: #111;
-        color: #fff;
-        padding: 18px;
-        font-size: 25px;
-        letter-spacing: 10px;
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 8px;
+}
+
+.bordered-style {
+    height: auto;
+    width: auto;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 8px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 70px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -70,7 +161,11 @@ textarea {
     max-width: 280px;
 }
 
-.ipAddressRow tr {
+#connection-table {
+    margin-top: 30px;
+}
+
+.ipAddresses tr {
     cursor: pointer;
 }
 

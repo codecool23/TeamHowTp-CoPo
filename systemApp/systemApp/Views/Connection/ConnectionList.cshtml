@@ -1,59 +1,53 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title></title>
-</head>
 <body>
-    <div class="jumbotron">
-        <h1>Connectionlist</h1>
-        <p class="lead">Connections available</p>
-    </div>
-
-    <button title="refresh" onclick="location.href = '@(Url.Action("Index", "Connection"))'">
-        <span class="glyphicon glyphicon-refresh"></span>
-    </button>
-
-    @{ if (ViewData["errorMessage"] != null)
-            {
-            <div class="alert alert-danger">
-                @ViewData["errorMessage"]
-            </div>
-        }}
-
-
     <div class="container">
-        <table class="table table-hover table-responsive ipAddressRow">
-            <thead>
-                <tr>
-                    <th>IP</th>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var x in ConnectionManager.connectionList)
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 half-opacity container-padding">
+
+                <span class="bordered-style">Connection list</span>
+
+                @{ if (ViewData["errorMessage"] != null)
+                    {
+                        <div class="alert alert-warning alert-with-margin">
+                            @ViewData["errorMessage"]
+                        </div>
+                    }}
+
+
+                @if (ConnectionManager.connectionList.Count != 0)
                 {
-                    <tr title="click for more info" onclick="location.href = '@(Url.Action("Index", "Info",  new { IP = @x.IP }))'">
-                        <td>@x.IP</td>
-                        <td>@x.Name</td>
-                    </tr>}
-            </tbody>
-        </table>
+                <table class="table table-hover table-responsive ipAddresses" id="connection-table">
+                    <thead>
+                        <tr>
+                            <th>IP</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in ConnectionManager.connectionList)
+                        {
+                            <tr title="click for more info" onclick="location.href = '@(Url.Action("Index", "Info", new { IP = @x.IP }))'">
+                                <td>@x.IP</td>
+                                <td>@x.Name</td>
+                            </tr>}
+                    </tbody>
+                </table>
+                } else
+                {
+                    <div class="alert alert-info alert-with-margin">No connections found. Please try to <a class="bold-link" onclick="location.href = '@(Url.Action("Index", "Connection"))'">refresh</a> or search for new connections.</div>
+                }
 
-        <form action="@(Url.Action("Index", "Info"))" method="post">
-            <input type="text" name="IP" />
-            <input type="submit" name="submitIp" value="Go!" />
-        </form>
-
+                <form action="@(Url.Action("Index", "Info"))" method="post" id="ip-input">
+                    <input class="custom-input-field" type="text" name="IP" />
+                    <input class="custom-button" type="submit" name="submitIp" value="Search" />
+                </form>
+                <p class="italic">hint: search should be of the following structure:</p>
+                <p class="italic">"http://'IP address':'port'/PcInfoSender"</p>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
     </div>
 </body>
-</html>
