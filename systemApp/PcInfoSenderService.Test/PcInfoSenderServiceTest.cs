@@ -39,7 +39,7 @@ namespace PcInfoSenderService.Test
         [Test]
         public void ShouldGetRuntimeInformationUptimeLargerThanZero()
         {
-            Assert.That(sut.GetRuntimeInformation().ComputerUpTime.Seconds, Is.GreaterThan(0));
+            Assert.That(sut.GetRuntimeInformation().ComputerUpTime.Length, Is.GreaterThan(0));
         }
 
         [Test]
