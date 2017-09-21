@@ -47,6 +47,20 @@ input:focus {
     padding-bottom: 40px; /* Height of the footer */
 }
 
+.alert-with-margin {
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold-link {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .bg {
     /* The image used */
     background-image: url("desktop.jpeg");

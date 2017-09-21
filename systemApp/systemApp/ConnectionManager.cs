@@ -17,7 +17,8 @@ namespace systemApp
     {
         public static List<Models.Connection> connectionList = new List<Models.Connection>();
 
-        public static async Task GetAllUri() {
+        public static async Task GetAllUri()
+        {
             connectionList.Clear();
             var allConnections = await WcfClient.WcfClient_DiscoverChannel();
             foreach (var x in allConnections){
