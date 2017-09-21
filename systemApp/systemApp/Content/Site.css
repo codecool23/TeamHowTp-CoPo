@@ -52,6 +52,14 @@ input:focus {
     margin-bottom: 35px;
 }
 
+#connections-title {
+    margin-bottom: 20px;
+}
+
+#refresh {
+    margin-top: 20px;
+}
+
 .italic {
     font-style: italic;
 }
