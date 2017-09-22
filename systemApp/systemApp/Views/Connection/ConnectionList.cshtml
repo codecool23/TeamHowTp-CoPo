@@ -20,7 +20,7 @@
                 @if (ConnectionManager.connectionList.Count != 0)
                 {
                 <br />
-                <button class="custom-button" id="refresh">Refresh</button>
+                <button class="custom-button" id="refresh" onclick="location.href = '@(Url.Action("Index", "Connection"))'">Refresh</button>
                 <table class="table table-hover table-responsive ipAddresses" id="connection-table">
                     <thead>
                         <tr>
